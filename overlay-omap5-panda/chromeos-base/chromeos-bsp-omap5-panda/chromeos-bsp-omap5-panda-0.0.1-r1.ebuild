@@ -1,0 +1,1 @@
+chromeos-bsp-omap5-panda-0.0.1.ebuild

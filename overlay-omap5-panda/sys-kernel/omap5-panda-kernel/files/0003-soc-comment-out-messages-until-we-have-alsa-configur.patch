@@ -1,0 +1,49 @@
+From da008bbe93e8bf5b25540a7be88022f7de0fb3c3 Mon Sep 17 00:00:00 2001
+From: Kevin McCray <kevin.mccray@ti.com>
+Date: Fri, 16 Mar 2012 16:22:56 -0700
+Subject: [PATCH 3/4] soc: comment out messages until we have alsa configured correctly
+
+---
+ sound/soc/soc-pcm.c |   12 ++++++------
+ 1 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/sound/soc/soc-pcm.c b/sound/soc/soc-pcm.c
+index 62e05a6..6df5796 100644
+--- a/sound/soc/soc-pcm.c
++++ b/sound/soc/soc-pcm.c
+@@ -1931,8 +1931,8 @@ int soc_dpcm_runtime_update(struct snd_soc_dapm_widget *widget)
+ 
+ 		paths = fe_path_get(fe, SNDRV_PCM_STREAM_PLAYBACK, &list);
+ 		if (paths < 0) {
+-			dev_warn(fe->dev, "%s no valid %s route from source to sink\n",
+-					fe->dai_link->name,  "playback");
++			//dev_warn(fe->dev, "%s no valid %s route from source to sink\n",
++			//		fe->dai_link->name,  "playback");
+ 			ret = paths;
+ 			goto out;
+ 		}
+@@ -1960,8 +1960,8 @@ capture:
+ 
+ 		paths = fe_path_get(fe, SNDRV_PCM_STREAM_CAPTURE, &list);
+ 		if (paths < 0) {
+-			dev_warn(fe->dev, "%s no valid %s route from source to sink\n",
+-					fe->dai_link->name,  "capture");
++			//dev_warn(fe->dev, "%s no valid %s route from source to sink\n",
++			//		fe->dai_link->name,  "capture");
+ 			ret = paths;
+ 			goto out;
+ 		}
+@@ -2336,8 +2336,8 @@ int soc_dpcm_fe_dai_open(struct snd_pcm_substream *fe_substream)
+ 	fe->dpcm[stream].runtime = fe_substream->runtime;
+ 
+ 	if (fe_path_get(fe, stream, &list) <= 0) {
+-		dev_warn(fe->dev, "asoc: %s no valid %s route from source to sink\n",
+-			fe->dai_link->name, stream ? "capture" : "playback");
++		//dev_warn(fe->dev, "asoc: %s no valid %s route from source to sink\n",
++		//	fe->dai_link->name, stream ? "capture" : "playback");
+ 			return -EINVAL;
+ 	}
+ 
+-- 
+1.7.4.1
+
