@@ -1,7 +1,7 @@
-From 1c51f018591f490874627c3044a1844716607332 Mon Sep 17 00:00:00 2001
+From 57ee32eac82fccce10d18a8902f146ca20cca787 Mon Sep 17 00:00:00 2001
 From: Vikram Pandita <vikram.pandita@ti.com>
 Date: Thu, 12 Apr 2012 18:45:33 -0700
-Subject: [PATCH 3/4] hack: disable audio logging noise
+Subject: [PATCH 2/4] hack: disable audio logging noise
 
 Signed-off-by: Vikram Pandita <vikram.pandita@ti.com>
 ---
@@ -46,5 +46,5 @@ index 62e05a6..6df5796 100644
  	}
  
 -- 
-1.7.5.4
+1.7.4.1
 
