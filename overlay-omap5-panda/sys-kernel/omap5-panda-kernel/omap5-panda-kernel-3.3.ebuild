@@ -10,7 +10,7 @@ EGIT_BRANCH="tilt-tracking"
 
 # To move up to a new commit, you should update this and then bump the
 # symlink to a new revision
-EGIT_COMMIT="84cdb7ca5b79e895adb45bba47fb2ade6ed07d84"
+EGIT_COMMIT="5a1aaccc663546ec659bd1cf39029febae8a7f87"
 
 inherit git cros-kernel2
 

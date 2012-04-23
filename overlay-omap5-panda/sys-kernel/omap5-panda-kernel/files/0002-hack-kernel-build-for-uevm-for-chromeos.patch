@@ -1,0 +1,87 @@
+From 6b894f5a5d32f1dc746aba2371e63bd3ed77b749 Mon Sep 17 00:00:00 2001
+From: Vikram Pandita <vikram.pandita@ti.com>
+Date: Thu, 12 Apr 2012 16:11:31 -0700
+Subject: [PATCH 2/4] hack: kernel build for uevm for chromeos
+
+Signed-off-by: Vikram Pandita <vikram.pandita@ti.com>
+---
+ arch/arm/configs/omap_5430evm_defconfig |    3 ++-
+ arch/arm/mach-omap2/board-omap5evm.c    |   12 ++++++------
+ arch/arm/mach-omap2/opp5xxx_data.c      |    2 +-
+ 3 files changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/arch/arm/configs/omap_5430evm_defconfig b/arch/arm/configs/omap_5430evm_defconfig
+index a5c673b..113eacc 100644
+--- a/arch/arm/configs/omap_5430evm_defconfig
++++ b/arch/arm/configs/omap_5430evm_defconfig
+@@ -42,7 +42,8 @@ CONFIG_PREEMPT=y
+ CONFIG_HIGHMEM=y
+ CONFIG_ZBOOT_ROM_TEXT=0x0
+ CONFIG_ZBOOT_ROM_BSS=0x0
+-CONFIG_CMDLINE="console=ttyO2,115200n8 root=/dev/mmcblk0p2 rootwait earlyprintk earlycon=ttyO2.115200n8"
++CONFIG_CMDLINE="console=ttyO2,115200n8 root=/dev/mmcblk0p3 rootwait earlyprintk earlycon=ttyO2.115200n8 test=1"
++CONFIG_CMDLINE_FORCE=y
+ CONFIG_CPU_FREQ=y
+ CONFIG_CPU_FREQ_GOV_USERSPACE=y
+ CONFIG_CPU_FREQ_GOV_ONDEMAND=y
+diff --git a/arch/arm/mach-omap2/board-omap5evm.c b/arch/arm/mach-omap2/board-omap5evm.c
+index f524b92..3b522aa 100644
+--- a/arch/arm/mach-omap2/board-omap5evm.c
++++ b/arch/arm/mach-omap2/board-omap5evm.c
+@@ -1315,7 +1315,7 @@ int __init omap5evm_touch_init(void)
+ 
+ static struct omap2_hsmmc_info mmc[] = {
+ 	{
+-		.mmc		= 2,
++		.mmc		= 1,
+ 		.caps		= MMC_CAP_4_BIT_DATA | MMC_CAP_8_BIT_DATA |
+ 					MMC_CAP_1_8V_DDR,
+ 		.gpio_cd	= -EINVAL,
+@@ -1325,7 +1325,7 @@ static struct omap2_hsmmc_info mmc[] = {
+ 		.no_off_init	= true,
+ 	},
+ 	{
+-		.mmc		= 1,
++		.mmc		= 2,
+ 		.caps		= MMC_CAP_4_BIT_DATA | MMC_CAP_UHS_SDR12 |
+ 					MMC_CAP_UHS_SDR25 | MMC_CAP_UHS_DDR50,
+ 		.gpio_cd	= 67,
+@@ -1866,7 +1866,7 @@ static void __init omap_5430_sevm_init(void)
+ {
+ 	int status;
+ 
+-	pr_info("Starting 5430 sEVM setup\n");
++	pr_info("************************Starting 5430 sEVM setup\n");
+ 
+ 	omap_mux_init_array(omap5432_sevm_mux, ARRAY_SIZE(omap5432_sevm_mux));
+ 
+@@ -2035,10 +2035,10 @@ static void __init omap_54xx_init(void)
+ 
+ 	omap5_mux_init(board_mux, NULL, OMAP_PACKAGE_CBL);
+ 
+-	if (!strcmp(dt_selected_model, "TI OMAP5 uEVM"))
++	//if (!strcmp(dt_selected_model, "TI OMAP5 uEVM"))
+ 		omap_5432_uevm_init();
+-	else
+-		omap_5430_sevm_init();
++	//else
++	//	omap_5430_sevm_init();
+ }
+ 
+ 
+diff --git a/arch/arm/mach-omap2/opp5xxx_data.c b/arch/arm/mach-omap2/opp5xxx_data.c
+index e090612..8480c1d 100644
+--- a/arch/arm/mach-omap2/opp5xxx_data.c
++++ b/arch/arm/mach-omap2/opp5xxx_data.c
+@@ -161,7 +161,7 @@ static struct omap_opp_def __initdata omap54xx_opp_def_list[] = {
+ 	OPP_INITIALIZER("mpu", "virt_dpll_mpu_ck", "mpu", false, 1500000000, OMAP5430_VDD_MPU_OPP_HIGH),
+ #else
+ 	/* MPU OPP1 - OPPLOW */
+-	OPP_INITIALIZER("mpu", "virt_dpll_mpu_ck", "mpu", true, 400000000, OMAP5430_VDD_MPU_OPP_LOW),
++	OPP_INITIALIZER("mpu", "virt_dpll_mpu_ck", "mpu", false, 400000000, OMAP5430_VDD_MPU_OPP_LOW),
+ 	/* MPU OPP2 - OPPNOM */
+ 	OPP_INITIALIZER("mpu", "virt_dpll_mpu_ck", "mpu", true, 800000000, OMAP5430_VDD_MPU_OPP_NOM),
+ 	/* MPU OPP3 - OPP-HIGH */
+-- 
+1.7.5.4
+
