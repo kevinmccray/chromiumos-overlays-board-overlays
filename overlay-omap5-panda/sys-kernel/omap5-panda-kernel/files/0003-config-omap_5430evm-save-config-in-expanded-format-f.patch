@@ -1,7 +1,7 @@
-From 75376b3106c515e36c7a7a0a6366108df58d64a8 Mon Sep 17 00:00:00 2001
+From 2a2a5ac0ccd5ceee5f8fa58316362ac79ede5a97 Mon Sep 17 00:00:00 2001
 From: Kevin McCray <kevin.mccray@ti.com>
-Date: Mon, 23 Apr 2012 16:39:48 -0700
-Subject: [PATCH 4/4] config: omap5evm: store config in expanded format
+Date: Thu, 26 Apr 2012 10:54:18 -0700
+Subject: [PATCH 3/4] config: omap_5430evm: save config in expanded format for chrome build
 
 Signed-off-by: Kevin McCray <kevin.mccray@ti.com>
 ---
@@ -2691,5 +2691,5 @@ index 78acd9d..4a68bba 100644
 +CONFIG_AVERAGE=y
 +# CONFIG_CORDIC is not set
 -- 
-1.7.4.1
+1.7.0.4
 
