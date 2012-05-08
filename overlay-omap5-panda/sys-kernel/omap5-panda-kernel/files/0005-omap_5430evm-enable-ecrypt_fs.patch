@@ -1,0 +1,69 @@
+From 84cb0b3944ba597ced76d0a9f87a48b756fbab21 Mon Sep 17 00:00:00 2001
+From: Kevin McCray <kevin.mccray@ti.com>
+Date: Mon, 7 May 2012 17:50:34 -0700
+Subject: [PATCH 5/5] omap_5430evm: enable ecrypt_fs
+
+Signed-off-by: Kevin McCray <kevin.mccray@ti.com>
+---
+ arch/arm/configs/omap_5430evm_defconfig |   10 ++++++++--
+ 1 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/configs/omap_5430evm_defconfig b/arch/arm/configs/omap_5430evm_defconfig
+index fb7c6c3..89a733f 100644
+--- a/arch/arm/configs/omap_5430evm_defconfig
++++ b/arch/arm/configs/omap_5430evm_defconfig
+@@ -658,6 +658,7 @@ CONFIG_IPV6_NDISC_NODETYPE=y
+ # CONFIG_IEEE802154 is not set
+ # CONFIG_NET_SCHED is not set
+ # CONFIG_DCB is not set
++# CONFIG_DNS_RESOLVER is not set
+ # CONFIG_BATMAN_ADV is not set
+ # CONFIG_OPENVSWITCH is not set
+ CONFIG_RPS=y
+@@ -2361,6 +2362,7 @@ CONFIG_TMPFS_XATTR=y
+ CONFIG_MISC_FILESYSTEMS=y
+ # CONFIG_ADFS_FS is not set
+ # CONFIG_AFFS_FS is not set
++CONFIG_ECRYPT_FS=y
+ # CONFIG_HFS_FS is not set
+ # CONFIG_HFSPLUS_FS is not set
+ # CONFIG_BEFS_FS is not set
+@@ -2387,6 +2389,7 @@ CONFIG_NFS_V4_1=y
+ CONFIG_PNFS_FILE_LAYOUT=y
+ CONFIG_ROOT_NFS=y
+ CONFIG_NFS_USE_LEGACY_DNS=y
++# CONFIG_NFS_USE_NEW_IDMAPPER is not set
+ # CONFIG_NFSD is not set
+ CONFIG_LOCKD=y
+ CONFIG_LOCKD_V4=y
+@@ -2536,7 +2539,9 @@ CONFIG_EARLY_PRINTK=y
+ #
+ # Security options
+ #
+-# CONFIG_KEYS is not set
++CONFIG_KEYS=y
++CONFIG_ENCRYPTED_KEYS=y
++CONFIG_KEYS_DEBUG_PROC_KEYS=y
+ # CONFIG_SECURITY_DMESG_RESTRICT is not set
+ # CONFIG_SECURITY is not set
+ # CONFIG_SECURITYFS is not set
+@@ -2554,6 +2559,7 @@ CONFIG_CRYPTO_BLKCIPHER=y
+ CONFIG_CRYPTO_BLKCIPHER2=y
+ CONFIG_CRYPTO_HASH=y
+ CONFIG_CRYPTO_HASH2=y
++CONFIG_CRYPTO_RNG=y
+ CONFIG_CRYPTO_RNG2=y
+ CONFIG_CRYPTO_PCOMP2=y
+ CONFIG_CRYPTO_MANAGER=y
+@@ -2589,7 +2595,7 @@ CONFIG_CRYPTO_PCBC=y
+ #
+ # Hash modes
+ #
+-# CONFIG_CRYPTO_HMAC is not set
++CONFIG_CRYPTO_HMAC=y
+ # CONFIG_CRYPTO_XCBC is not set
+ # CONFIG_CRYPTO_VMAC is not set
+ 
+-- 
+1.7.4.1
+
